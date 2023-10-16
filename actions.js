@@ -16,7 +16,7 @@ const {
 const { GUM_CONFIG } = require("./constants");
 
 async function onList() {
-  const currentUser = await getCurrentUser();
+  const currentUser = await getCurrentUser() || {};
   const users = await getUsers();
   const keys = Object.keys(users);
   const length = Math.max(...keys.map((key) => key.length)) + 3;
