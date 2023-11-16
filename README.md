@@ -4,7 +4,7 @@ git user manager cli in git repo
 
 ## Installation
 ```
-npm install -g gum
+npm install -g @wstreet7/gum
 ```
 ## Usage
 ```

@@ -1,5 +1,5 @@
 {
-  "name": "gum",
+  "name": "@wstreet7/gum",
   "version": "1.0.0",
   "description": "Gum CLI",
   "bin": "./cli.js",
@@ -9,5 +9,10 @@
     "ini": "^2.0.0",
     "rc": "^1.2.8"
   },
-  "license": "MIT"
+  "author": "wstreet",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wstreet/gum.git"
+  }
 }
