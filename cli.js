@@ -14,9 +14,11 @@ program
   .action(actions.onUse);
 
 program
-  .command("add <name> <url> [home]")
+  .command("add <name> <email>")
   .description("Add custom user")
   .action(actions.onAdd);
+
+program.command("rm <name>").description("Remove user").action(actions.onRemove);
 
 program.parse(process.argv);
 

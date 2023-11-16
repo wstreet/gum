@@ -69,8 +69,20 @@ async function onAdd(name, email) {
   );
 }
 
+async function onRemove(name) {
+  const users = await getUsers();
+  if (!users[name]) {
+    return exit(`The user '${name}' is not found.`);
+  }
+
+  delete users[name];
+
+  await writeFile(GUM_CONFIG, { users }, "json");
+  printSuccess(`Remove user ${name} success.`);
+}
 module.exports = {
   onList,
   onUse,
   onAdd,
+  onRemove
 };
