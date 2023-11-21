@@ -2,7 +2,7 @@ const fs = require("fs");
 const ini = require("ini");
 const chalk = require("chalk");
 
-const { USER, GUM_CONFIG, GLOBAL_CONFIG } = require("./constants");
+const { USER, UMG_CONFIG, GLOBAL_CONFIG } = require("./constants");
 
 async function readFile(file, format = "ini") {
   return new Promise((resolve) => {
@@ -81,7 +81,7 @@ async function getCurrentUser() {
   return config[USER];
 }
 async function getUsers() {
-  const { users } = await readFile(GUM_CONFIG, "json");
+  const { users } = await readFile(UMG_CONFIG, "json");
   const global = await readFile(GLOBAL_CONFIG)
   return Object.assign({}, users, {[global.user.name]: global.user.email});
 }

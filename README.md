@@ -1,39 +1,39 @@
-# GUM
+# UMG
 
 git user manager cli in git repo
 
 ## Installation
 ```
-npm install -g @wstreet7/gum
+npm install -g umg
 ```
 ## Usage
 ```
-gum
+umg
 ```
 
 ### Add user
 ```
-gum add <username>
+umg add <username>
 
 🌰:
-gum add qwe qwe@gmail.com
+umg add qwe qwe@gmail.com
 
 output:
- SUCCESS  Add user qwe success, run gum use qwe command to use qwe user.
+ SUCCESS  Add user qwe success, run umg use qwe command to use qwe user.
 ```
 ### Remove user
 ```
-gum rm <username>
+umg rm <username>
 
 🌰:
-gum rm qwe
+umg rm qwe
 
 output:
  SUCCESS  Remove user qwe success.
 ```
-### List users, global setting and gum config list
+### List users, global setting and umg config list
 ```
-gum ls
+umg ls
 
 output:
 * wstreet7 ------- wstreet7@outlook.com
@@ -41,9 +41,9 @@ output:
 ```
 ### Set user in git repo
 ```
-gum use <username>
+umg use <username>
 
-gum use streetd
+umg use streetd
 
 output:
  SUCCESS  The user has been changed to 'streetd'.

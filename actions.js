@@ -1,4 +1,6 @@
 const chalk = require("chalk");
+const shell = require("shelljs");
+const os = require("os");
 
 const {
   exit,
@@ -7,13 +9,14 @@ const {
   geneDashLine,
   printMessages,
   printSuccess,
+  printError,
   getCurrentUser,
   getUsers,
   isLowerCaseEqual,
   isUserNotFound,
   getCurrentDir,
 } = require("./helpers");
-const { GUM_CONFIG } = require("./constants");
+const { UMG_CONFIG } = require("./constants");
 
 async function onList() {
   const currentUser = await getCurrentUser() || {};
@@ -55,16 +58,16 @@ async function onAdd(name, email) {
     emails.some((_email) => isLowerCaseEqual(_email, email))
   ) {
     return exit(
-      "The user name or email is already included in the gum users. Please make sure that the name and email are unique."
+      "The user name or email is already included in the umg users. Please make sure that the name and email are unique."
     );
   }
 
   users[name] = email;
 
-  await writeFile(GUM_CONFIG, { users }, "json");
+  await writeFile(UMG_CONFIG, { users }, "json");
   printSuccess(
     `Add user ${name} success, run ${chalk.green(
-      "gum use " + name
+      "umg use " + name
     )} command to use ${name} user.`
   );
 }
@@ -77,12 +80,33 @@ async function onRemove(name) {
 
   delete users[name];
 
-  await writeFile(GUM_CONFIG, { users }, "json");
+  await writeFile(UMG_CONFIG, { users }, "json");
   printSuccess(`Remove user ${name} success.`);
 }
+async function show(){
+  try {
+    if (!shell.which('git')) {
+      throw new ReferenceError('Sorry, this script requires git')
+    }
+  
+    let cmd = 'git config -l'
+    let stdout = shell.exec(cmd, { silent: true }).stdout
+    if (!stdout) {
+      return []
+    }
+  
+    const result = await stdout.match(/user.(name|email)=.+/gi)
+    result ? printSuccess(result.join(os.EOL)) : printError('No user.* config'+ os.EOL)
+  } catch (e) {
+    console.error(e.message)
+  }
+  
+}
+
 module.exports = {
   onList,
   onUse,
   onAdd,
-  onRemove
+  onRemove,
+  show
 };

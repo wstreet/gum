@@ -1,18 +1,20 @@
 {
-  "name": "@wstreet7/gum",
-  "version": "1.0.0",
-  "description": "Gum CLI",
-  "bin": "./cli.js",
+  "name": "umg",
+  "version": "1.0.1",
+  "description": "User manager for git",
+  "bin": {
+    "umg": "./bin/umg.js"
+  },
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^8.3.0",
     "ini": "^2.0.0",
-    "rc": "^1.2.8"
+    "shelljs": "^0.8.5"
   },
   "author": "wstreet",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/wstreet/gum.git"
+    "url": "git://github.com/wstreet/umg.git"
   }
 }
